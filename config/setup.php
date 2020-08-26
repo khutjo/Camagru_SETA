@@ -66,18 +66,18 @@ class install extends connection {
                 "ADMIN", "\$2y\$10\$oJ6GLzkywTDyZ.hKDCz9e.1YEj3eZMN2byrh4f3B.5DeaCvy/y6Q."]);
         $sql = "INSERT INTO user_database.media (userlink, likes, dislikes, image_src) VALUE (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("media/resource/"."8159247953d5aa96a582d5238b13219c.jpg"))]);
-        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("media/resource/"."funny cat pictures captions (10).jpg"))]);
-        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("media/resource/"."funny-fake-illness-awkward-moment-seal.jpg"))]);
-        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("media/resource/"."priorities-funny-drinking-memes.jpg"))]);
-        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("media/resource/"."angry-meme1.jpg"))]);
-        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("media/resource/"."funny-animals-1-5.jpg"))]);
-        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("media/resource/"."funny-soap-in-your-eye.jpg"))]);        
-        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("media/resource/"."Untitled.png"))]);        
+        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("../media/resource/"."8159247953d5aa96a582d5238b13219c.jpg"))]);
+        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("../media/resource/"."funny cat pictures captions (10).jpg"))]);
+        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("../media/resource/"."funny-fake-illness-awkward-moment-seal.jpg"))]);
+        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("../media/resource/"."priorities-funny-drinking-memes.jpg"))]);
+        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("../media/resource/"."angry-meme1.jpg"))]);
+        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("../media/resource/"."funny-animals-1-5.jpg"))]);
+        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("../media/resource/"."funny-soap-in-your-eye.jpg"))]);        
+        $stmt->execute(["ADMIN", 100, 0, base64_encode(file_get_contents("../media/resource/"."Untitled.png"))]);        
     }
 }
 
-$connect = new install($dsn, $user, $password);
+$connect = new install($dsn_new, $user, $password);
 $connect->set_up();
 $connect = NULL;
 echo "database setup";

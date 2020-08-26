@@ -1,5 +1,5 @@
 <?php
-    include "connection.php";
+    include "../config/connection.php";
 
     class save_changes extends connection {
         public $user;
@@ -21,7 +21,7 @@
                 $stmt = $this->conn->prepare($sql);
                 $stmt->execute([$_GET["id"]]);
                 
-                header("location:logout.php");
+                header("location:../config/logout.php");
             }
         }
     }

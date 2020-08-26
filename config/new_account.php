@@ -152,7 +152,7 @@ class get_my_pictures_from_database extends connection {
             $_SESSION['account_changes'] = "they_were_made";
         }
         else {$_SESSION['account_changes'] = "they_were_not_made";}
-        header("location:../pages/account_settings.php");
+        header("location:../pagesaccount_settings.php");
     }
 }	
 
@@ -190,14 +190,14 @@ class get_comment_data extends get_pictures_from_database {
         parent::__construct($dsn, $user, $password);
         $sql = "SELECT * FROM user_database.comments WHERE image_link=?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$this->pic[$_SESSION['gallary']]["image_id"]]);
+        $stmt->execute([$_SESSION['image_link_id']]);
         $this->comment = $stmt->fetchAll();
     }
     
     function add_comment (){
         $sql = "INSERT INTO user_database.comments (userlink, image_link, comment) VALUE (?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$_SESSION['user_loged_in'], $this->pic[$_SESSION['gallary']]["image_id"], $_POST["comments"]]);
+        $stmt->execute([$_SESSION['user_loged_in'], $_SESSION['image_link_id'], $_POST["comments"]]);
         $sql = "SELECT * FROM user_database.accounts WHERE UserName=?";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$_SESSION['immage_owner']]);
@@ -250,7 +250,7 @@ class new_account extends connection {
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$_POST['s_username'], $_POST['email']]);
         $user = $stmt->fetch();
-        if ($user && strcmp($_POST['s_username'], $user['UserName']) == 0)
+        if ($user && strcmp($_POST['s_username'], $user['username']) == 0)
         {
             $this->u_val = -1;
         }

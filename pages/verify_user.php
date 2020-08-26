@@ -1,6 +1,6 @@
 <?php
 
-include "connection.php";
+include "../config/connection.php";
 
 
 if (!isset($_SESSION))
@@ -8,13 +8,12 @@ if (!isset($_SESSION))
 
 if (!isset($_COOKIE['TechCOM']) && $_COOKIE['TechCOM'] == false){
     $_SESSION['login_now'] = "could not login";
-    // echo "its me 1";
-    header("location:index.php");
+    header("location:../index.php");
 }
 
 class verify_user extends connection {
     private $email = "to verify your TechCOM account enter this OTP: ";
-    private $email_link_head = "or click on the link http://localhost/Camagru_Seta/verify_by_link.php?OTP=";
+    private $email_link_head = "or click on the link http://localhost/Camagru_Seta/config/verify_by_link.php?OTP=";
     private $email_link_mid = "&stmp_man_filWR=";
     private $email_link_end = "&link=true&Email=";
     public $OTP_error = 0;
@@ -33,7 +32,7 @@ class verify_user extends connection {
         else{
             $_SESSION['login_now'] = "could not login";
             echo "its me 2";
-            // header("location:index.php");
+            // header("location:../index.php");
         }
     }
 
@@ -64,7 +63,7 @@ class verify_user extends connection {
             $stmt->execute([$user['Email']]);
             $_SESSION['login_now'] ="you may log in now";
             echo "<script>window.close();</script>";
-            header("location:index.php");
+            header("location:../index.php");
         }
         else {
             $this->OTP_error = 1;
@@ -107,7 +106,7 @@ if (isset($_SESSION['email'])&& $_SESSION['email'] == "")
 <html>
 <head>
 <title>varify email</title>
-<link rel="shortcut icon" type="image/x-icon" href="web_logo.png" />
+<link rel="shortcut icon" type="image/x-icon" href="../web_logo.png" />
     <style>
 div.top_div {
     background-color: rgb(10, 1, 8);
@@ -172,7 +171,7 @@ div.form_div {
 </head>
 <body class="home_screen_background">
 <div class="top_div">
-<a href="index.php"><img class="home_logo" src="web_logo.png" alt="home"></a>
+<a href="../index.php"><img class="home_logo" src="../web_logo.png" alt="home"></a>
 </div>
 <div class="main_div">
 <b class="set_text_color">VERIFY ACCOUNT</b>

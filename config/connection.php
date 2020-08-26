@@ -1,6 +1,6 @@
 <?php
 
-include "config/database.php";
+include "database.php";
 
 class connection {
     protected $conn;
@@ -45,21 +45,4 @@ class connection {
         return ($err);
     }
 
-    // function user_cmp($add_user)
-    // {
-    //     $sql = "SELECT username
-    //     FROM user_database.accounts
-    //     WHERE UserName= ?";
-    //     $stmt = $this->conn->prepare($sql);
-    //     $stmt->execute([$_POST['username']]);
-    //     $user = $stmt->fetch();
-    //     if ($user && $add_user == $user['username'])
-    //     {
-    //         echo "what";
-    //         return 0;
-    //     } else {
-    //         echo "yeap";
-    //         return 1;
-    //     }
-    // }
 }

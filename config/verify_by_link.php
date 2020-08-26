@@ -19,12 +19,12 @@ class verify extends connection {
             $stmt->execute([$user['Email']]);
             $_SESSION['login_now'] ="you may log in now";
             echo "<script>window.close();</script>";
-            header("location:index.php");
+            header("location:../index.php");
         }
         else{
             $_SESSION['login_now'] = "could not login";
             echo "<script>window.close();</script>";
-            header("location:index.php");
+            header("location:../index.php");
         }
     }
 }

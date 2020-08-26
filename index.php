@@ -1,13 +1,13 @@
 <?php
 $err = 0;
-include "new_account.php";
+include "config/new_account.php";
 
 if (!isset($_SESSION))
     session_start();
 
 if (isset($_SESSION['TechCOM']) && isset($_SESSION['user_loged_in']) && $_SESSION['TechCOM'] === 'its_on'){
     echo "<script>window.close();</script>";
-    header("location:main_page.php");
+    header("location:pages/main_page.php");
 }
 
 function base64_to_jpeg($base64_string) {
@@ -28,14 +28,14 @@ if (isset($_POST['left_button']) && $_POST['left_button'] == ">"){
     $_SESSION['home_pic'] = $_SESSION['home_pic'] -1;
     if ($_SESSION['home_pic'] < 0){
         $_SESSION['home_pic'] = -1 + count($pictures->pic);
-        header("location:main_page.php");
+        header("location:pages/main_page.php");
     }
 }
 if (isset($_POST['right_button']) && $_POST['right_button'] == "<"){
     $_SESSION['home_pic'] = $_SESSION['home_pic'] +1;
     if ($_SESSION['home_pic'] == count($pictures->pic)){
         $_SESSION['home_pic'] = 0;
-        header("location:main_page.php");
+        header("location:pages/main_page.php");
     }
 }
 
@@ -85,7 +85,7 @@ if (isset($_POST['submit_signup']) && $_POST['submit_signup'] == "SIGN UP"){
     remove_miscellaneous_signup();
     if ($valid_cred->is_val()){
         $_SESSION['email'] = "";
-        header("location:verify_user.php");
+        header("location:pages/verify_user.php");
     }
 }
 if (isset($_POST['submit_login']) && $_POST['submit_login'] == "Login"){
@@ -93,7 +93,7 @@ if (isset($_POST['submit_login']) && $_POST['submit_login'] == "Login"){
     if ($valid_cred->varify_login()){
         $_SESSION['TechCOM'] = 'its_on';
         echo "<script>window.close();</script>";
-        header("location:main_page.php");
+        header("location:pages/main_page.php");
     }
     else
         $err = 1;
@@ -105,7 +105,7 @@ if (isset($_POST['submit_login']) && $_POST['submit_login'] == "Login"){
 <head>
 <title>Login</title>
 <link rel="shortcut icon" type="image/x-icon" href="web_logo.png" />
-<link rel="stylesheet" href="login_style.css">
+<link rel="stylesheet" href="CSS/login_style.css">
 </head>
 <body class="home_screen_background">
     <div class="top_div">
@@ -115,7 +115,7 @@ if (isset($_POST['submit_login']) && $_POST['submit_login'] == "Login"){
                     <input class="input_form" type="text" name="username" value="" placeholder="USERNAME" minlength=5; maxlength="15"  required>
                     <input class="input_form" type="password" name="password" value="" placeholder="PASSWORD" maxlength="55" required>
                     <input class="login_button" type="submit" name="submit_login" value="Login">
-                    <a href="forgot_password.php">Forgot password</a></form>
+                    <a href="pages/forgot_password.php">Forgot password</a></form>
                     <p style="font-family: Arial, Helvetica, sans-serif; color: red;">
                     <?php   if ($err == 1){echo "USERNAME OR PASSWORD INCORRECT";}?></p>
                     

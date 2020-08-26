@@ -1,24 +1,5 @@
 <?php
 
-// echo "<br />",strtolower(pathinfo($_FILES["fileToUpload"]["name"],PATHINFO_EXTENSION)),"<br />";
-// print_r($_FILES["fileToUpload"]);
-// echo "<br />";
-// print_r(getimagesize($_FILES["fileToUpload"]["tmp_name"]));
-
-// jpg
-// [name] => funny-fake-illness-awkward-moment-seal.jpg 
-// [type] => image/jpeg 
-// [tmp_name] => /goinfre/kmaputla/Desktop/database/php/tmp/php1unoXP 
-// [error] => 0 
-// [size] => 57065  
-// [0] => 474 
-// [1] => 347 
-// [2] => 2 
-// [3] => width="474" height="347" 
-// [bits] => 8 
-// [channels] => 3 
-// [mime] => image/jpeg 
-
 include "connection.php";
 
 class Image_upload extends connection{
@@ -39,11 +20,6 @@ class Image_upload extends connection{
     }
 
     function upload_image (){
-        // $image = file_get_contents($target_file);
-        // $image = base64_encode($image);
-        // echo $image;
-        // $connect = new upload_file ($dsn, $user, $password);
-        // $connect->upload_pic($image);
         $sql = "INSERT INTO user_database.media (userlink ,likes ,unlikes, image_src) VALUE (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['picture', 0, 0, $target_file]);
@@ -53,20 +29,10 @@ class Image_upload extends connection{
 
 
 function base64_to_jpeg($base64_string, $output_file) {
-    // open the output file for writing
     $ifp = fopen( $output_file, 'wb' ); 
-
-    // split the string on commas
-    // $data[ 0 ] == "data:image/png;base64"
-    // $data[ 1 ] == <actual base64 string>
     $data = explode( ',', $base64_string );
-
-    // we could add validation here with ensuring count( $data ) > 1
     fwrite( $ifp, base64_decode( $data[ 1 ] ) );
-
-    // clean up the file resource
     fclose( $ifp ); 
-
     return $output_file; 
 }
 ?>

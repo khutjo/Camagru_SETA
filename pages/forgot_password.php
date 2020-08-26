@@ -1,6 +1,6 @@
 <?php
 
-    include "connection.php";
+    include "../config/connection.php";
 
   
 if (!isset($_SESSION))
@@ -13,7 +13,7 @@ session_start();
 
     class they_forgot_their_shirt extends connection {
         private $head = "To reset you password click on the link\n";
-        private $link = "http://localhost/Camagru_Seta/reset_password.php?enterkey=";
+        private $link = "http://localhost/Camagru_Seta/pages/reset_password.php?enterkey=";
         private $tail = "&forgot=true&idiot=true&id=";
         public $err = 0;
         private $user;
@@ -70,12 +70,12 @@ session_start();
 ?>
 <html>
 <head>
-<link rel="shortcut icon" type="image/x-icon" href="web_logo.png" />
-<link rel="stylesheet" href="forgot_pass.css">
+<link rel="shortcut icon" type="image/x-icon" href="../web_logo.png" />
+<link rel="stylesheet" href="../CSS/forgot_pass.css">
 </head>
 <body class="home_screen_background">
     <div class="top_div">
-        <a href="index.php"><img class="home_logo" src="web_logo.png" alt="home"></a>
+        <a href="../index.php"><img class="home_logo" src="../web_logo.png" alt="home"></a>
     </div>
     <div class="forgot">
         <form method="post">

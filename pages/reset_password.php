@@ -1,11 +1,10 @@
 <?php
-// print_r($_GET);
 
 
 if (!isset($_SESSION))
     session_start();
 
-include "connection.php";
+include "../config/connection.php";
 
 if (isset($_SESSION['TechCOM']) && isset($_SESSION['user_loged_in']) && $_SESSION['TechCOM'] === 'its_on'){
     echo "<script>window.close();</script>";
@@ -26,7 +25,7 @@ if (isset($_SESSION['TechCOM']) && isset($_SESSION['user_loged_in']) && $_SESSIO
             if (!$this->user || !password_verify($_GET["enterkey"], $this->user["enter_key"])){
                 $_SESSION['reset'] = "no_go_you_cant";
                 echo "<script>window.close();</script>";
-                header("location:index.php");
+                header("location:../index.php");
             }
         }
         
@@ -52,7 +51,7 @@ if (isset($_SESSION['TechCOM']) && isset($_SESSION['user_loged_in']) && $_SESSIO
             $stmt->execute([$this->user['Email']]);
             $_SESSION['reset'] = "password_changed";
             echo "<script>window.close();</script>";
-            header("location:index.php");
+            header("location:../index.php");
         }
     }
     
@@ -62,7 +61,7 @@ if (isset($_SESSION['TechCOM']) && isset($_SESSION['user_loged_in']) && $_SESSIO
     else{
         $_SESSION['reset'] = "no_go_you_cant";
         echo "<script>window.close();</script>";
-        header("location:index.php");
+        header("location:../index.php");
     }
 
     if (isset($_POST["submit_cred"]) && $_POST["submit_cred"] == "submit"){
@@ -76,12 +75,12 @@ if (isset($_SESSION['TechCOM']) && isset($_SESSION['user_loged_in']) && $_SESSIO
 ?>
 <html>
 <head>
-<link rel="shortcut icon" type="image/x-icon" href="web_logo.png" />
-<link rel="stylesheet" href="forgot_pass.css">
+<link rel="shortcut icon" type="image/x-icon" href="../web_logo.png" />
+<link rel="stylesheet" href="../CSS/forgot_pass.css">
 </head>
 <body class="home_screen_background">
     <div class="top_div">
-        <a href="index.php"><img class="home_logo" src="web_logo.png" alt="home"></a>
+        <a href="../index.php"><img class="home_logo" src="../web_logo.png" alt="home"></a>
     </div>
     <div class="forgot">
         <form method="post">

@@ -12,18 +12,18 @@
         name = "NULL";
       }
       function emoji1_set(){
-        imageObj.src = 'stickers/emoji1.png';
+        imageObj.src = '../stickers/emoji1.png';
       }
       function emoji2_set(){
-        imageObj.src = 'stickers/emoji2.png';
+        imageObj.src = '../stickers/emoji2.png';
 
       }
       function emoji3_set(){
-        imageObj.src = 'stickers/emoji3.png';
+        imageObj.src = '../stickers/emoji3.png';
 
       }
       function emoji4_set(){
-        imageObj.src = 'stickers/emoji4.png';
+        imageObj.src = '../stickers/emoji4.png';
 
       }
       function submit_it(){
@@ -58,7 +58,7 @@
             }
           };
         //   window.alert("hello");
-        uploadrequest.open("post", "upload.php", true);
+        uploadrequest.open("post", "../config/upload.php", true);
         uploadrequest.send();      
 
         // document.location.href = canvas.toDataURL("image/png").replace("image/png", "media/octet-stream");
@@ -69,14 +69,7 @@
 
 function startup(){
    
-    
-//}
-
-// Put event listeners into place
-//window.addEventListener("DOMContentLoaded", function() {
-    // Grab elements, create settings, etc.
     var canvas = document.getElementById('canvas');
-    // var div_photo = document.getElementById('photo');
     var context = canvas.getContext('2d');
     var video = document.getElementById('video');
     var mediaConfig =  { video: true };
@@ -85,7 +78,6 @@ function startup(){
         console.log('An error has occurred!', e)
     };
 
-    // Put video listeners into place
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia(mediaConfig).then(function(stream) {
             video.srcObject  = stream;
@@ -94,7 +86,6 @@ function startup(){
         });
     }
 
-    /* Legacy code below! */
     else if(navigator.getUserMedia) { // Standard
         navigator.getUserMedia(mediaConfig, function(stream) {
             video.src = stream;
@@ -119,22 +110,18 @@ function startup(){
     }
     
 
-    // Trigger photo take
     document.getElementById('snap').addEventListener('click', function() {
         var ajaxRequest;  // The variable that makes Ajax possible!
 	
 	try{
-		// Opera 8.0+, Firefox, Safari
 		ajaxRequest = new XMLHttpRequest();
 	} catch (e){
-		// Internet Explorer Browsers
 		try{
 			ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
 		} catch (e) {
 			try{
 				ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
 			} catch (e){
-				// Something went wrong
 				alert("Your browser broke!");
 				return false;
 			}
@@ -150,18 +137,15 @@ function startup(){
         ajaxRequest.onreadystatechange = function() {
         
             if (this.readyState == 4 && this.status == 200) {
-            //  window.alert("hello");
             }
           };
-        ajaxRequest.open("post", "serverTime.php", true);
+        ajaxRequest.open("post", "../config/serverTime.php", true);
         ajaxRequest.send(xmlstring);
         setTimeout("location.reload(true);",0);
         
 
-        // document.location.href = canvas.toDataURL("image/png").replace("image/png", "media/octet-stream");
     });
 
-//}, false);
 }
 
 window.addEventListener('load', startup, false);

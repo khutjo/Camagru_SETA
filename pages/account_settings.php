@@ -3,7 +3,7 @@
 
 if (!isset($_SESSION))
     session_start();
-include "new_account.php";
+include "../config/new_account.php";
 
 if (!isset($_SESSION['TechCOM']) && !isset($_SESSION['user_loged_in']) && $_SESSION['TechCOM'] != 'its_on'){
     echo "<script>window.close();</script>";
@@ -42,14 +42,7 @@ function base64_to_jpeg($base64_string, $start) {
         $find++;
         // echo "i did it";
     }
-    // echo $_SESSION['f_vala'],"\n";
-    // echo $_SESSION['f_valc'],"\n";
-    // echo $_SESSION['f_valv'],"\n";
-    // echo $_SESSION['f_valb'],"\n";
-    // echo $_SESSION['f_val'],"\n";
-    // echo $_SESSION['l_val'],"\n";
-    // echo $_SESSION['e_val'],"\n";
-    // echo $_SESSION['u_val'],"\n";
+
     if (isset($_POST["edit"]) && $_POST["edit"] == "EDIT"){
         
         $my_details->check_changes(); 
@@ -58,18 +51,18 @@ function base64_to_jpeg($base64_string, $start) {
 ?>
 <html>
 <head>
-<link rel="shortcut icon" type="image/x-icon" href="web_logo.png" />
-<link rel="stylesheet" href="forgot_pass.css">
+<link rel="shortcut icon" type="image/x-icon" href="../web_logo.png" />
+<link rel="stylesheet" href="../CSS/forgot_pass.css">
 </head>
 <body class="home_screen_background">
     <div class="top_div">
-        <a href="index.php"><img class="home_logo" src="web_logo.png" alt="home"></a>
+        <a href="../index.php"><img class="home_logo" src="../web_logo.png" alt="home"></a>
     <div>
         <div class="dropdown">
   <button class="dropbtn"><?php echo $_SESSION['user_loged_in'];?></button>
   <div class="dropdown-content">
     <a href="main_page.php">Home</a>
-    <a href="logout.php">Logout</a>
+    <a href="../config/logout.php">Logout</a>
     <a href="nope.php">uploads</a>
     </div>
     </div>
@@ -97,11 +90,9 @@ function base64_to_jpeg($base64_string, $start) {
         <form method="post">
             <?php
             $start = 0;
-            while ($start < count($my_details->my_pictures)){
-            base64_to_jpeg($my_details->my_pictures[$start][4], $start);
-            echo "<img style=\"margin: 5px 15px; height:190; width:190;\" src=\"media/user_pics/user_pictures",$start,".jpeg\" alt=\"my_pics\">";
-            echo "<input class=\"delete_button\" type=\"submit\" name=\"delete",$start,"\" value=\"DELETE\" >";
-            $start++;
+            foreach ($my_details->my_pictures as $pictures){
+            echo "<img style=\"margin: 5px 15px; height:190; width:190;\" src=\"data:image/jpeg;base64,".$pictures["image_src"]."\" alt=\"my_pics\">";
+            echo "<input class=\"delete_button\" type=\"submit\" name=\"delete",$start++,"\" value=\"DELETE\" >";
             }
             ?>
         </form>

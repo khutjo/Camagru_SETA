@@ -1,18 +1,18 @@
 <?php
 $errors = 0;
 
-include "new_account.php";
+include "../config/new_account.php";
 
 if (!isset($_SESSION))
     session_start();
 
 if (!isset($_SESSION['TechCOM']) && !isset($_SESSION['user_loged_in']) && $_SESSION['TechCOM'] != 'its_on'){
     echo "<script>window.close();</script>";
-    header("location:index.php");
+    header("location:../index.php");
 }
 
 function base64_to_jpeg($base64_string, $send_num) {
-    $ifp = fopen("media/tmp_pic".$send_num.".jpeg", 'wb'); 
+    $ifp = fopen("../media/tmp_pic".$send_num.".jpeg", 'wb'); 
     fwrite($ifp, base64_decode($base64_string));
     fclose($ifp); 
 }
@@ -79,8 +79,11 @@ $start = $_SESSION['gallary'];
 $index = 0;
 while ($index < 8){
     base64_to_jpeg($pictures_lineup->pic[$start][4], $index);
-    if ($index == 3)
+    if ($index == 3){
         $_SESSION['immage_owner'] = $pictures_lineup->pic[$start][1];
+        $_SESSION['image_link_id'] = $pictures_lineup->pic[$start][0];
+        echo $_SESSION['image_link_id'];
+    }
 
     $start--;
     $index++;
@@ -102,19 +105,19 @@ if (isset($_POST["submit_comment"]) && $_POST["submit_comment"] == "comment"){
 <html>
 
 <head>
-    <link rel="shortcut icon" type="image/x-icon" href="web_logo.png" />
-    <link rel="stylesheet" href="main_page_style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="../web_logo.png" />
+    <link rel="stylesheet" href="../CSS/main_page_style.css">
 </head>
 
 <body class="picture_time">
     <div class="top_div">
-        <img class="home_logo" src="web_logo.png" alt="home">
+        <img class="home_logo" src="../web_logo.png" alt="home">
         <div class="logout_form_div">
 
             <div class="dropdown">
                 <button class="dropbtn"><?php echo $_SESSION['user_loged_in'];?></button>
                 <div class="dropdown-content">
-                    <a href="logout.php">Logout</a>
+                    <a href="../config/logout.php">Logout</a>
                     <a href="nope.php">uploads</a>
                     <a href="account_settings.php">Settings</a>
                 </div>
@@ -126,7 +129,7 @@ if (isset($_POST["submit_comment"]) && $_POST["submit_comment"] == "comment"){
             <input class="pic_nav_B" style="margin:300 auto;" type="submit" name="right_button" value="<">
         </form>
         <div style="height: 600px; width: 600px; margin: auto;">
-            <img style="height: 480px; width: 600px; margin:20px auto;" src="media/tmp_pic3.jpeg" alt="preview"></div>
+            <img style="height: 480px; width: 600px; margin:20px auto;" src="../media/tmp_pic3.jpeg" alt="preview"></div>
         <form method="post" style="float: right;">
             <input class="pic_nav_B" style="margin:-300 auto;" type="submit" name="left_button" value=">">
         </form>
@@ -135,7 +138,7 @@ if (isset($_POST["submit_comment"]) && $_POST["submit_comment"] == "comment"){
         <div class="scroll_div">
             <?php
             foreach ($comment_tag->comment as $list){
-                        echo "<div><p style=\"word-break: break-word;color: white\">( ",$list[1]," )   ",$list[3],"</p></div>";}?>
+                       echo "<div><p style=\"word-break: break-word;color: white\">( ",$list[1]," )   ",$list[3],"</p></div>";}?>
         </div>
         <div class="comment_box">
             <form method="post">
@@ -155,12 +158,12 @@ if (isset($_POST["submit_comment"]) && $_POST["submit_comment"] == "comment"){
         <form method="post" style="float: left;">
             <input class="pic_nav_B" style="margin:70px 0px;" type="submit" name="left_button" value="<">
         </form>
-        <img style="height: 200px; width: 200px; margin: 10px;" src="media/tmp_pic0.jpeg" alt="preview">
-        <img style="height: 200px; width: 200px; margin: 10px;" src="media/tmp_pic1.jpeg" alt="preview">
-        <img style="height: 200px; width: 200px; margin: 10px;" src="media/tmp_pic2.jpeg" alt="preview">
-        <img style="height: 200px; width: 200px; margin: 10px;" src="media/tmp_pic4.jpeg" alt="preview">
-        <img style="height: 200px; width: 200px; margin: 10px;" src="media/tmp_pic5.jpeg" alt="preview">
-        <img style="height: 200px; width: 200px; margin: 10px;" src="media/tmp_pic6.jpeg" alt="preview">
+        <img style="height: 200px; width: 200px; margin: 10px;" src="../media/tmp_pic0.jpeg" alt="preview">
+        <img style="height: 200px; width: 200px; margin: 10px;" src="../media/tmp_pic1.jpeg" alt="preview">
+        <img style="height: 200px; width: 200px; margin: 10px;" src="../media/tmp_pic2.jpeg" alt="preview">
+        <img style="height: 200px; width: 200px; margin: 10px;" src="../media/tmp_pic4.jpeg" alt="preview">
+        <img style="height: 200px; width: 200px; margin: 10px;" src="../media/tmp_pic5.jpeg" alt="preview">
+        <img style="height: 200px; width: 200px; margin: 10px;" src="../media/tmp_pic6.jpeg" alt="preview">
 
         <form method="post" style="float: right;">
             <input class="pic_nav_B" style="margin:-160px 0px;" type="submit" name="right_button" value=">">
