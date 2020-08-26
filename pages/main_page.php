@@ -82,7 +82,6 @@ while ($index < 8){
     if ($index == 3){
         $_SESSION['immage_owner'] = $pictures_lineup->pic[$start][1];
         $_SESSION['image_link_id'] = $pictures_lineup->pic[$start][0];
-        echo $_SESSION['image_link_id'];
     }
 
     $start--;
