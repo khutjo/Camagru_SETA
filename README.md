@@ -3,31 +3,31 @@
 camagru is a image sharing website where people can visit to view picture other user have posted and should they choose to participate the can create an account and start posting, liking and commenting on other people pictures
 
 # Requirements
-  XAMPP : https://www.apachefriends.org/download.html
+  1. XAMPP : https://www.apachefriends.org/download.html
 
 # Installation
-  Install XAMPP, take notice of install location
-  Clone file to htdocs location in the XAMPP install files
-  Setup smtp protocol for your XAMPP version.
+  1. Install XAMPP, take notice of install location
+  1. Clone file to htdocs location in the XAMPP install files
+  1. Setup smtp protocol for your XAMPP version.
 
 # how to setup the database
-  Start up the MySQL database in XAMPP
-  Open you web browser and go to <your localhost address>/Camagru_SETA/config/setup.php
+  1. Start up the MySQL database in XAMPP
+  1. Open you web browser and go to <your localhost address>/Camagru_SETA/config/setup.php
 
 # How to run the program
-  Start your apache server in XAMPP
-  I your web browser go to <your localhost address>/Camagru_SETA
+  1. Start your apache server in XAMPP
+  1. I your web browser go to <your localhost address>/Camagru_SETA
 
 # code breakdown
-  Back-end technologies
-    PHP
-  Front-end technologies
-    HTML
-    CSS
-  JavaScript
-  Database Management system
-    MySQL
-    phpmyadmin
+  1. Back-end technologies
+    1. PHP
+  1. Front-end technologies
+    1. HTML
+    1. CSS
+  1. JavaScript
+  1. Database Management system
+    1. MySQL
+    1. phpmyadmin
 
 # Testing 
 https://github.com/wethinkcode-students/corrections_42_curriculum/blob/master/camagru.markingsheet.pdf
