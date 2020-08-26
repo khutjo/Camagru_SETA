@@ -12,11 +12,11 @@ camagru is a image sharing website where people can visit to view picture other 
 
 # how to setup the database
   1. Start up the MySQL database in XAMPP
-  1. Open you web browser and go to <your localhost address>/Camagru_SETA/config/setup.php
+  1. Open you web browser and go to <your localhost address>/Camagru_Seta/config/setup.php
 
 # How to run the program
   1. Start your apache server in XAMPP
-  1. I your web browser go to <your localhost address>/Camagru_SETA
+  1. I your web browser go to <your localhost address>/Camagru_Seta
 
 # code breakdown
   ### Back-end technologies
