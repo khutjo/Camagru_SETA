@@ -20,7 +20,7 @@ camagru is a image sharing website where people can visit to view picture other 
 
 # code breakdown
   1. Back-end technologies
-    2. PHP
+    * PHP
   1. Front-end technologies
     1. HTML
     1. CSS
