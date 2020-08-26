@@ -26,8 +26,8 @@ camagru is a image sharing website where people can visit to view picture other 
   1. CSS
   1. JavaScript
   ### Database Management system
-    1. MySQL
-    1. phpmyadmin
+  * MySQL
+  * phpmyadmin
 
 # Testing 
 https://github.com/wethinkcode-students/corrections_42_curriculum/blob/master/camagru.markingsheet.pdf
