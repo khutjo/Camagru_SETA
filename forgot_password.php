@@ -13,7 +13,7 @@ session_start();
 
     class they_forgot_their_shirt extends connection {
         private $head = "To reset you password click on the link\n";
-        private $link = "http://localhost/reset_password.php?enterkey=";
+        private $link = "http://localhost/Camagru_Seta/reset_password.php?enterkey=";
         private $tail = "&forgot=true&idiot=true&id=";
         public $err = 0;
         private $user;

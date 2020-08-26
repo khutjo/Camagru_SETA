@@ -40,7 +40,7 @@ class get_my_pictures_from_database extends connection {
 
     function add_account (){
         $email_head = "changes have been made to your account to keep changes click on the link\n";
-        $email_link = "http://localhost//apply_change.php?enterkey=";
+        $email_link = "http://localhost//Camagru_Seta/apply_change.php?enterkey=";
         $email_tail = "&id=";
         $enter_key = substr(md5(time()),  -6, 6);
         $concat_email = wordwrap($email_head.$email_link.$enter_key.$email_tail.$this->my_account['ID'] , 70);
@@ -219,9 +219,9 @@ class get_comment_data extends get_pictures_from_database {
         $stmt->execute([$_SESSION['user_loged_in'], $this->pic[$_SESSION['gallary']]["image_id"], $_POST["comments"]]);
         $sql = "SELECT * FROM user_database.accounts WHERE UserName=?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$this->pic[$_SESSION['gallary']]["userlink"]]);
+        $stmt->execute([$_SESSION['immage_owner']]);
         $user_info = $stmt->fetch();
-        if ($user_info && $user_info["notify"] == "true"){
+        if (isset($user_info) && $user_info["notify"] == "true"){
             $comment = wordwrap($_POST["comments"] , 70);
             mail($user_info["Email"], $_SESSION['user_loged_in']." commented on you picture", $comment);
         }

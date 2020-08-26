@@ -14,7 +14,7 @@ if (!isset($_COOKIE['TechCOM']) && $_COOKIE['TechCOM'] == false){
 
 class verify_user extends connection {
     private $email = "to verify your TechCOM account enter this OTP: ";
-    private $email_link_head = "or click on the link http://localhost//verify_by_link.php?OTP=";
+    private $email_link_head = "or click on the link http://localhost/Camagru_Seta/verify_by_link.php?OTP=";
     private $email_link_mid = "&stmp_man_filWR=";
     private $email_link_end = "&link=true&Email=";
     public $OTP_error = 0;
