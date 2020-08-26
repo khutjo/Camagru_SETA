@@ -1,6 +1,6 @@
 <?php
 include "connection.php";
-include "database.php";
+include "config/database.php";
 
 if (!isset($_SESSION))
     session_start();
