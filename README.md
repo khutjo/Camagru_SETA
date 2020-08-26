@@ -19,13 +19,13 @@ camagru is a image sharing website where people can visit to view picture other 
   1. I your web browser go to <your localhost address>/Camagru_SETA
 
 # code breakdown
-  1. Back-end technologies
-    * PHP
-  1. Front-end technologies
-    1. HTML
-    1. CSS
+  ### Back-end technologies
+    1 PHP
+  ### Front-end technologies
+  1. HTML
+  1. CSS
   1. JavaScript
-  1. Database Management system
+  ### Database Management system
     1. MySQL
     1. phpmyadmin
 
