@@ -61,7 +61,8 @@ session_start();
     if (isset($_POST["submit_cred"]) && $_POST["submit_cred"] === "submit"){
         $_POST['email'] = strip_tags(stripslashes(trim($_POST['email'])));
         $_POST['username'] = strip_tags(stripslashes(trim($_POST['username'])));
-        if ($conn = new they_forgot_their_shirt($dsn, $user, $password)){
+        $conn = new they_forgot_their_shirt($dsn, $user, $password);
+        if ($conn->err == 0){
             $conn->send_email();
             // echo "=====>".$conn->userp['UserName']."<=====";
         }
@@ -84,7 +85,7 @@ session_start();
                 <input class="input_form" type="email" name="email" value="" placeholder="Email" maxlength="55" required>
                 <input class="login_button" type="submit" name="submit_cred" value="submit">
                 <p class="error_m">
-                    <?php   if (isset($err) && $err == 1){echo "Username or Email do not match any in our database";}?></p>
+                    <?php   if (isset($conn->err) && $conn->err == 1){echo "Username or Email do not match any in our database";}?></p>
         </form>
     </div>
 </body>
